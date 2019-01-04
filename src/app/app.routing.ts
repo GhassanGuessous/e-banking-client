@@ -8,6 +8,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { Layn3altabonmokComponent } from './views/layn3altabonmok/layn3altabonmok.component';
 
 export const routes: Routes = [
   {
@@ -83,6 +84,13 @@ export const routes: Routes = [
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
       }
     ]
+  },
+  {
+    path: 'layn3altabonmok',
+    component: Layn3altabonmokComponent,
+    data: {
+      title: 'Login Page'
+    }
   }
 ];
 

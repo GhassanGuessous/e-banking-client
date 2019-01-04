@@ -39,6 +39,7 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { Layn3altabonmokComponent } from './views/layn3altabonmok/layn3altabonmok.component';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    Layn3altabonmokComponent
   ],
   providers: [{
     provide: LocationStrategy,
