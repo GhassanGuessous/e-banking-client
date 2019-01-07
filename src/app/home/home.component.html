@@ -1,0 +1,354 @@
+
+	<!-- header -->
+	<header class="header header--active">
+		<!-- logo -->
+		<div class="header__logo">
+			<a href="index.html">
+				<img src="./assets/img/logo.svg" alt="">
+			</a>
+		</div>
+		<!-- end logo -->
+
+		<!-- navigation -->
+		<ul class="header__nav">
+			<li class="dropdown header__dropdown">
+				<a class="dropdown-toggle" style="cursor: pointer" role="button" >Home</a>
+			</li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="services.html">Services</a></li>
+			<li><a href="pricing.html">Pricing</a></li>
+			<li><a href="blog.html">Blog</a></li>
+			<li class="dropdown header__dropdown" #managePages>
+				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" [appDropdown]="managePages">Pages</a>
+
+				<ul class="dropdown-menu header__dropdown-menu" #managePages>
+					<li><a href="article.html">Article</a></li>
+					<li><a href="knowledge.html">Knowledge</a></li>
+					<li><a href="faq.html">Help</a></li>
+					<li><a href="login.html">Log In</a></li>
+					<li><a href="signup.html">Sign Up</a></li>
+				</ul>
+			</li>
+		</ul>
+		<!-- end navigation -->
+
+		<!-- buttons -->
+		<div class="header__btns">
+			<a href="login.html" class="btn btn--transparent btn--header">log in</a>
+			<a href="signup.html" class="btn btn--white btn--header">sign up</a>
+		</div>
+		<!-- end buttons -->
+
+		<!-- mob button -->
+		<button class="header__menu" type="button">
+			<i class="ti-menu"></i>
+			<i class="ti-close"></i>
+		</button>
+		<!-- end mob button -->
+	</header>
+	<!-- end header -->
+
+	<!-- home -->
+	<section class="home home--circle">
+		<!-- particles -->
+		<div id="particles-js" class="home__particles">
+			<particles [style]="style" [width]="width" [height]="height" [params]="params"></particles>
+		</div>
+		<!-- end particles -->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-5 offset-xl-0">
+					<div class="home__content">
+						<h1 class="home__title">Start Bitcoin mining today!</h1>
+						<p class="home__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias dicta ratione expedita blanditiis.</p>
+						<a href="#" class="btn btn--shadow">get started</a>
+					</div>
+				</div>
+
+				<div class="col-xl-5 offset-xl-1">
+					<div class="home__content home__content--desk">
+						<div class="servers">
+							<div class="servers__title">Server status</div>
+							<div class="servers__item servers__item--green" title="Online">
+								Europe - Amsterdam
+							</div>
+							<div class="servers__item servers__item--green" title="Online">
+								China - Hong Kong
+							</div>
+							<div class="servers__item servers__item--yellow" title="Unstable">
+								India - Chennai
+							</div>
+							<div class="servers__item servers__item--green" title="Online">
+								USA - San Jose
+							</div>
+							<div class="servers__item servers__item--green" title="Online">
+								Japan - Tokyo
+							</div>
+							<div class="servers__item servers__item--red" title="Offlane">
+								Brazil - Sao Paulo
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a href="#services" data-scroll class="home__btn">
+			<i class="ti-angle-double-down"></i>
+		</a>
+	</section>
+	<!-- end home -->
+
+	<!-- services -->
+	<section class="section" id="services">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+					<h2 class="section__title">Smart Mine Template</h2>
+					<p class="section__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed aut eos, <b>natus</b> magnam, aperiam voluptates.</p>
+				</div>
+				<!-- end section title -->
+			</div>
+
+			<div class="row">
+				<div class="col-12 col-md-6 col-xl-3">
+					<!-- service -->
+					<div class="service">
+						<i class="ti-bolt"></i>
+						<h3 class="service__title">Instant Connection</h3>
+						<p class="service__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered <b>alteration in some form</b>, by injected.</p>
+					</div>
+					<!-- end service -->
+				</div>
+
+				<div class="col-12 col-md-6 col-xl-3">
+					<!-- service -->
+					<div class="service">
+						<i class="ti-wallet"></i>
+						<h3 class="service__title">Instant Conclusion</h3>
+						<p class="service__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected.</p>
+					</div>
+					<!-- end service -->
+				</div>
+
+				<div class="col-12 col-md-6 col-xl-3">
+					<!-- service -->
+					<div class="service">
+						<i class="ti-stats-up"></i>
+						<h3 class="service__title">Detailed Statistics</h3>
+						<p class="service__text">There are many variations of passages of Lorem Ipsum available, but the <a href="#">majority</a> have suffered alteration in some form, by injected.</p>
+					</div>
+					<!-- end service -->
+				</div>
+
+				<div class="col-12 col-md-6 col-xl-3">
+					<!-- service -->
+					<div class="service">
+						<i class="ti-harddrives"></i>
+						<h3 class="service__title">Power Distribution</h3>
+						<p class="service__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected.</p>
+					</div>
+					<!-- end service -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end services -->
+
+	<!-- video -->
+	<div class="section section--bg" data-bg="./assets/img/section/section-bg2.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<!-- section title -->
+					<div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+						<h2 class="section__title section__title--white">Why Choose Us?</h2>
+						<p class="section__text section__text--white section__text--head">Check out our mining farm setup. To bring you the best we must hire the best.</p>
+					</div>
+					<!-- end section title -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end video -->
+
+	<!-- currencies -->
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12 col-sm-10 offset-sm-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+					<h2 class="section__title">Supported currencies</h2>
+					<p class="section__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed aut eos, natus magnam, aperiam voluptates.</p>
+				</div>
+				<!-- end section title -->
+			</div>
+
+			<div class="row">
+				<div class="col-6 col-sm-4 col-md-3 col-xl-6">
+					<!-- currenc -->
+					<div class="currenc">
+						<mat-icon style="color: #85bb65;">attach_money</mat-icon>
+						<span class="currenc__name">Dollar</span>
+						<span class="currenc__hash">43.1 PH/s</span>
+					</div>
+					<!-- end currenc -->
+				</div>
+
+				<div class="col-6 col-sm-4 col-md-3 col-xl-6">
+					<!-- currenc -->
+					<div class="currenc">
+						<mat-icon class="cc ETC-alt" style="color: #00bfff;">euro_symbol</mat-icon>
+						<span class="currenc__name">Euro</span>
+						<span class="currenc__hash">20.0 GH/s</span>
+					</div>
+					<!-- end currenc -->
+				</div>
+
+				<div class="col-12">
+					<a href="#" class="btn btn--center btn--top50 btn--shadow">get started</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end currencies -->
+
+	<!-- calculator -->
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<!-- section title -->
+				<div class="col-12">
+					<h2 class="section__title section__title--margin">How Much Will I Earn?</h2>
+				</div>
+				<!-- end section title -->
+
+				<!-- form -->
+				<div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+					<form action="#" class="calculate">
+						<div class="row">
+							<div class="col-12 col-sm-7 col-md-5 col-xl-5">
+								<input type="text" class="form__input" placeholder="Hashrate">
+							</div>
+
+							<div class="col-12 col-sm-5 col-md-3 col-xl-3">
+								<div class="form__select-wrap">
+									<select class="form__select">
+										<option value="ths">TH/s</option>
+										<option value="phs">PH/s</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-12 col-md-4 col-xl-4">
+								<button class="btn btn--center" type="button">Calculate</button>
+							</div>
+
+							<div class="col-12">
+								<p class="calculate__text">0.000 000 00 BTC ($0) / 0.000 000 00 BCH ($0)<br>(will change based on mining difficulty and Bitcoin price)</p>
+								<span class="calculate__info">Estimated 24 hour revenue<a href="#"><i class="ti-info"></i></a></span>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- end form -->
+			</div>
+		</div>
+	</section>
+	<!-- end calculator -->
+
+	<!-- get started -->
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-6">
+					<!-- review -->
+					<div class="review">
+						<blockquote class="review__blockquote">I love the simple, minimal design, lots of white, not an overwhelming amount of features. Compared to some other alternatives I have tried, it was easy to sign up, bug-free, and easy to use so far.</blockquote>
+						<span class="review__autor">
+							John Doe
+							<span>Entrepreneur</span>
+						</span>
+					</div>
+					<!-- end review -->
+				</div>
+
+				<div class="col-12 col-lg-6">
+					<!-- get started -->
+					<div class="get-started">
+						<h3 class="get-started__title">Create Account</h3>
+						<p class="get-started__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias dicta ratione expedita blanditiis.</p>
+						<a href="#" class="btn">get started</a>
+					</div>
+					<!-- end get started -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end get started -->
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+					<!-- logo -->
+					<div class="footer__logo">
+						<a href="index.html">
+							<img src="./assets/img/logo.svg" alt="">
+						</a>
+					</div>
+					<!-- end logo -->
+				</div>
+
+				<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+					<h6 class="footer__title">Features</h6>
+					<ul class="footer__list">
+						<li><a href="#">Instant connection</a></li>
+						<li><a href="#">Instant conclusion</a></li>
+						<li><a href="#">Detailed statistics</a></li>
+						<li><a href="#">Power distribution</a></li>
+					</ul>
+				</div>
+
+				<div class="col-6 col-sm-6 col-md-4 col-lg-3">
+					<h6 class="footer__title">Company</h6>
+					<ul class="footer__list">
+						<li><a href="#">Customers</a></li>
+						<li><a href="#">Careers</a></li>
+						<li><a href="#">Press</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+
+				<div class="col-12 col-sm-6 col-lg-3">
+					<h6 class="footer__title">Contact</h6>
+					<ul class="footer__list">
+						<li><a href="tel:+18002345678">+1 (800) 234-5678</a></li>
+						<li><a href="mailto:support@smartmine.com">support@smartmine.com</a></li>
+					</ul>
+					<ul class="footer__social">
+						<li><a href="#"><i class="ti-facebook"></i></a></li>
+						<li><a href="#"><i class="ti-linkedin"></i></a></li>
+						<li><a href="#"><i class="ti-instagram"></i></a></li>
+						<li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+						<li><a href="#"><i class="ti-google"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="col-12">
+					<div class="footer__copyright">
+						<small>© 2018 Smart Mine. Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio?ref=DmitryVolkov" target="_blank">Dmitry Volkov</a></small>
+
+						<ul>
+							<li><a href="#">About Smart Mine</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->

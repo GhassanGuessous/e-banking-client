@@ -1,32 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatIconModule} from '@angular/material/icon';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
-import { MainContentComponent } from './components/dashboard/main-content/main-content.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DropdownDirective,
     NavbarComponent,
-    LoginComponent,
-    SignupComponent,
-    DashboardComponent,
     SidebarComponent,
-    MainContentComponent,
-    FooterComponent,
-    HomePageComponent
+    DashboardComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    MatIconModule,
+    FontAwesomeModule,
+    FormsModule,
+    ParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
