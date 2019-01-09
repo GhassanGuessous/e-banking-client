@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthentificationService } from '../shared/authentification.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthentificationService) { }
 
   myStyle: object = {};
   myParams: object = {};
@@ -32,6 +33,10 @@ export class HomeComponent implements OnInit {
               },
       }
   };
+}
+
+onLogout(){
+    this.authService.onLogout();
 }
 
 }

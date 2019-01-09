@@ -11,11 +11,9 @@
 
 		<!-- navigation -->
 		<ul class="header__nav">
-			<li class="dropdown header__dropdown">
-				<a class="dropdown-toggle" style="cursor: pointer" role="button" >Home</a>
-			</li>
+			<li><a role="button" routerLink="/">Home</a></li>
 			<li><a href="about.html">About Us</a></li>
-			<li><a href="services.html">Services</a></li>
+			<li><a [routerLink]="['/']" fragment="services" style="cursor:pointer">Services</a></li>
 			<li><a href="pricing.html">Pricing</a></li>
 			<li><a href="blog.html">Blog</a></li>
 			<li class="dropdown header__dropdown" #managePages>
@@ -33,9 +31,13 @@
 		<!-- end navigation -->
 
 		<!-- buttons -->
-		<div class="header__btns">
-			<a href="login.html" class="btn btn--transparent btn--header">log in</a>
-			<a href="signup.html" class="btn btn--white btn--header">sign up</a>
+		<ng-template [ngIf]="!authService.isAuthenticated()">
+			<a [routerLink]="['/login']" class="btn btn--transparent btn--header">log in</a>
+			<a [routerLink]="['/register']" class="btn btn--white btn--header">sign up</a>
+		</ng-template>
+		<div class="header__btns" *ngIf="authService.isAuthenticated()">
+			<a [routerLink]="['/dashboard']" class="btn btn--transparent btn--header">Dashboard</a>
+			<a style="cursor: pointer" (click)="onLogout()" class="btn btn--transparent btn--header">Logout</a>
 		</div>
 		<!-- end buttons -->
 
@@ -94,7 +96,7 @@
 			</div>
 		</div>
 
-		<a href="#services" data-scroll class="home__btn">
+		<a fragment="#services" data-scroll class="home__btn">
 			<i class="ti-angle-double-down"></i>
 		</a>
 	</section>
