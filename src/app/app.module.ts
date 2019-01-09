@@ -7,7 +7,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +19,8 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './shared/auth-guard.service';
 import { LogGuard } from './shared/log-guard.service';
+import { HttpClientModule } from '@angular/common/http';
+import { VirementComponent } from './dashboard/virement/virement.component';
 
 
 
@@ -31,7 +33,8 @@ import { LogGuard } from './shared/log-guard.service';
     DashboardComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    VirementComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { LogGuard } from './shared/log-guard.service';
     FormsModule,
     ParticlesModule,
     HttpModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard],
