@@ -15,17 +15,16 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Mes opérations &#8594; Virement</h4>
-                <form class="form-sample">
+                <form class="form-sample" (ngSubmit)="onSubmit(f)" #f="ngForm">
                   
                   <div class="row">
                     
                     <div class="col-md-10">
                       <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Gender</label>
+                        <label class="col-sm-3 col-form-label">Comptes</label>
                         <div class="col-sm-9">
-                          <select class="form-control">
-                            <option>Male</option>
-                            <option>Female</option>
+                          <select name="ribSource" (change)="onSelected(t.value)" #t [value]='comptes[0].rib' ngModel class="form-control">
+                            <option *ngFor="let compte of comptes" value="{{compte.rib}}">{{compte.rib}}</option>
                           </select>
                         </div>
                       </div>
@@ -37,7 +36,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Votre solde</label>
                         <div class="col-sm-9">
-                          <input class="form-control" placeholder="0.00€" disabled/>
+                          <input class="form-control" placeholder="0.00€" [value]="solde" disabled/>
                         </div>
                       </div>
                     </div>
@@ -46,7 +45,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Après Virement</label>
                         <div class="col-sm-9">
-                          <input class="form-control" placeholder="0.00€" disabled/>
+                          <input class="form-control" [value]="newSolde" placeholder="0.00€" disabled/>
                         </div>
                       </div>
                     </div>
@@ -56,7 +55,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Solde Virement</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" placeholder="0.00€"/>
+                          <input type="text" class="form-control" (keyup)="onWritingSolde($event)" ngModel name="soldeVirement" placeholder="0.00€"/>
                         </div>
                       </div>
                     </div>
@@ -66,7 +65,7 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Rib</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" placeholder="RIB" />
+                          <input type="text" class="form-control" placeholder="RIB" ngModel name="rib" />
                         </div>
                       </div>
                     </div>
@@ -75,7 +74,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group row">
-                          <button type="button" class="btn btn-primary btn-block">Effectuer Virement</button>
+                          <button type="submit" class="btn btn-primary btn-block">Effectuer Virement</button>
                       </div>
                     </div>
                   </div>

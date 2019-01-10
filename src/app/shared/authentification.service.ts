@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthentificationService{
  roles: Array<any> = [];
  token: string;
- constructor(private http: HttpClient){}
+ constructor(private router: Router,private http: HttpClient){}
 
  onSignin(form: NgForm){
      //console.log(form.value);
@@ -34,6 +34,6 @@ export class AuthentificationService{
 
  onLogout(){
     localStorage.removeItem('token');
-    //this.router.navigate(['/']);
+    this.router.navigate(['/']);
  }
 }

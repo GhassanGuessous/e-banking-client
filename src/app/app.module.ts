@@ -21,6 +21,7 @@ import { AuthGuard } from './shared/auth-guard.service';
 import { LogGuard } from './shared/log-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { VirementComponent } from './dashboard/virement/virement.component';
+import { CompteService } from './models/compte.service';
 
 
 
@@ -45,7 +46,7 @@ import { VirementComponent } from './dashboard/virement/virement.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
