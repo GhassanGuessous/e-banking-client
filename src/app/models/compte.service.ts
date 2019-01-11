@@ -38,9 +38,14 @@ export class CompteService{
     }
 
     sendVirement(data){
-        console.log("Tha data : " + JSON.stringify(data));
+        //console.log("Tha data : " + JSON.stringify(data));
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
         return this.http.post('http://localhost:8080/Client/éffectuer-un-virement',JSON.stringify(data),{headers: headers});
+    }
+
+    payerService(data){
+        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
+        return this.http.post('http://localhost:8080/Client/payer-un-service',JSON.stringify(data),{headers: headers});
     }
 
 }

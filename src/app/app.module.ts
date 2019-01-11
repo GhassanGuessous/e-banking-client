@@ -22,6 +22,9 @@ import { LogGuard } from './shared/log-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { VirementComponent } from './dashboard/virement/virement.component';
 import { CompteService } from './models/compte.service';
+import { RachargesComponent } from './dashboard/paiment-services/racharges/racharges.component';
+import { FactureComponent } from './dashboard/paiment-services/facture/facture.component';
+import { FooterComponent } from './dashboard/footer/footer.component';
 
 
 
@@ -35,7 +38,10 @@ import { CompteService } from './models/compte.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    VirementComponent
+    VirementComponent,
+    RachargesComponent,
+    FactureComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

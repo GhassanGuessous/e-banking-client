@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         let jwtToken = response.headers.get('authorization');
         //console.log("Token from response " + jwtToken);
         this.authentificationService.setToken(jwtToken);
-        //console.log("Token from service "+ this.authentificationService.getToken());
+        console.log("Token from service "+ this.authentificationService.getToken());
         this.router.navigate(['/dashboard']);
       },
       (error) => console.log(error),
