@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Compte } from 'src/app/models/compte.model';
 import { CompteService } from 'src/app/models/compte.service';
 import { NgForm } from '@angular/forms';
+import { DonService } from 'src/app/models/don.service';
 
 @Component({
-  selector: 'app-virement',
-  templateUrl: './virement.component.html',
-  styleUrls: ['./virement.component.css']
+  selector: 'app-donate',
+  templateUrl: './donate.component.html',
+  styleUrls: ['./donate.component.css']
 })
-export class VirementComponent implements OnInit {
+export class DonateComponent implements OnInit {
+
   compte: Compte;
   comptes: Compte[];
   selectedCompte: Compte;
@@ -16,7 +18,8 @@ export class VirementComponent implements OnInit {
   solde: number = 0.00;
   newSolde: number;
   soldeApres: number;
-  constructor(private compteService: CompteService) {}
+
+  constructor(private compteService: CompteService,private donService: DonService) {}
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -24,18 +27,13 @@ export class VirementComponent implements OnInit {
     this.compteService.comptesChanged.subscribe(
       (comptes: Compte[]) => {
         this.comptes = comptes;
-        this.compte = this.comptes[0];
         this.solde = this.comptes[0].sold;
         this.newSolde = this.solde;
       }
     );
       
-    //console.log("solde " + this.solde);
   }
 
-  /*getAccounts(){
-    this.compteService.getCompteFromBack();
-  }*/
 
   onSelected(value){
 
@@ -54,18 +52,11 @@ export class VirementComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    const data = {
-      'ribSource': form.value.ribSource,
-      'ribDestination': form.value.rib,
-      'montant': form.value.soldeVirement,
-    };
-    console.log(data);
-    this.compteService.sendVirement(data).subscribe(
+    console.log('form: '+JSON.stringify(form.value));
+    this.donService.faireUnDon(form).subscribe(
       (response) => {
-        console.log("response ===> "+response);
+        console.log('response faire un don: '+response);
       }
     );
-    
   }
-
 }

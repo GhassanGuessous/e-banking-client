@@ -32,6 +32,10 @@ import { PHistoriqueComponent } from './dashboard/paiment-services/p-historique/
 import { PaimentService } from './models/paiment.service';
 import { ProfileComponent } from './dashboard/services/profile/profile.component';
 import { ChangePasswordComponent } from './dashboard/services/change-password/change-password.component';
+import { MescomptesComponent } from './dashboard/mescomptes/mescomptes.component';
+import { DonateComponent } from './dashboard/donate/donate.component';
+import { DonService } from './models/don.service';
+import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historique.component';
 
 
 
@@ -53,7 +57,10 @@ import { ChangePasswordComponent } from './dashboard/services/change-password/ch
     HistoriqueComponent,
     PHistoriqueComponent,
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    MescomptesComponent,
+    DonateComponent,
+    DHistoriqueComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +71,7 @@ import { ChangePasswordComponent } from './dashboard/services/change-password/ch
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService, VirementService, PaimentService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService, VirementService, PaimentService,DonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

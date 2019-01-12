@@ -53,7 +53,7 @@
       <div class="collapse" id="ui-basic" #manageDropDownMenu1>
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/factures']">Mes Comptes</a>
+            <a class="nav-link" [routerLink]="['/mes-comptes']">Mes Comptes</a>
           </li>
         </ul>
       </div>
@@ -97,6 +97,24 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link" role="button" style="cursor: pointer" [appDropdown]="manageDropDownMenu5">
+          <mat-icon class="menu-icon">money</mat-icon>
+          <span class="menu-title">Faire un don</span>
+          <mat-icon class="menu-arrow">arrow_right</mat-icon>
+        </a>
+        <div class="collapse" id="ui-basic" #manageDropDownMenu5>
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/don']">Faire un don</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/d-historique']">Historique</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+    <li class="nav-item">
       <a class="nav-link" role="button" style="cursor: pointer" [appDropdown]="manageDropDownMenu4">
         <mat-icon class="menu-icon">file_copy</mat-icon>
         <span class="menu-title">Mes demandes en ligne</span>
@@ -106,9 +124,6 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/factures']">Demande Chéquier</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Demande RIB</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/recharge']">Commande de Fonds DH</a>

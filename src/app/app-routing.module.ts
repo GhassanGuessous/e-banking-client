@@ -15,6 +15,9 @@ import { HistoriqueComponent } from './dashboard/virement/historique/historique.
 import { PHistoriqueComponent } from './dashboard/paiment-services/p-historique/p-historique.component';
 import { ProfileComponent } from './dashboard/services/profile/profile.component';
 import { ChangePasswordComponent } from './dashboard/services/change-password/change-password.component';
+import { MescomptesComponent } from './dashboard/mescomptes/mescomptes.component';
+import { DonateComponent } from './dashboard/donate/donate.component';
+import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historique.component';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -27,7 +30,12 @@ const appRoutes: Routes = [
     {path: 'facture', canActivate: [AuthGuard], component: FactureComponent},
     {path: 'p-historique', canActivate: [AuthGuard], component: PHistoriqueComponent},
 
+    {path: 'don', canActivate: [AuthGuard], component: DonateComponent},
+    {path: 'd-historique', canActivate: [AuthGuard], component: DHistoriqueComponent},
+
     {path: 'reclamation', canActivate: [AuthGuard], component: ReclamationComponent},
+
+    {path: 'mes-comptes', canActivate: [AuthGuard], component: MescomptesComponent},
 
     {path: 'profil', canActivate: [AuthGuard], component: ProfileComponent},
     {path: 'change-password', canActivate: [AuthGuard], component: ChangePasswordComponent},

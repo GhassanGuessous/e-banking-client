@@ -1,0 +1,103 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <app-navbar></app-navbar>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <app-sidebar></app-sidebar>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+          
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Faire un don &#8594; Faire un don</h4>
+                  <form class="form-sample" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                    
+                    <div class="row">
+                      
+                      <div class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Comptes</label>
+                          <div class="col-sm-9">
+                            <select name="compte"  (change)="onSelected(t.value)" #t ngModel class="form-control" required>
+                              <option value="">Choisir un compte</option>
+                              <option *ngFor="let compte of comptes" value="{{compte.rib}}" >{{compte.rib}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Votre solde</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="0.00€" [value]="solde" disabled/>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Après Virement</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" [value]="newSolde" placeholder="0.00€" disabled/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Solde Virement</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" (keyup)="onWritingSolde($event)" ngModel name="montant" placeholder="0.00€"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Organisme</label>
+                              <div class="col-sm-9">
+                                <select name="organisme" ngModel class="form-control" required>
+                                  <option value="1">Sidaxtion</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                            <button type="submit" class="btn btn-primary btn-block">Effectuer Virement</button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <app-footer></app-footer>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->

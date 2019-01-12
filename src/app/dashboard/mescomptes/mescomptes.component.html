@@ -1,0 +1,171 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <app-navbar></app-navbar>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <app-sidebar></app-sidebar>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+            <div class="row">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Ma relation banque &#8594; Mes comptes</h4>
+                      <form class="form-sample" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      
+                        <div class="row">
+                          <div class="col-md-10">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Compte</label>
+                              <div class="col-sm-9">
+                                <select name="ribSource" (change)="onSelected(t.value)" #t ngModel class="form-control">
+                                  <option *ngFor="let compte of comptes" value="{{compte.rib}}">{{compte.rib}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Mon compte &#8594; Solde</h4>
+                  <form class="form-sample">
+  
+                    <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">€</span>
+                              </div>
+                              <input type="text" class="form-control" placeholder="0.00" [value]="solde" disabled>
+                              <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                              </div>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-lg-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Mon Compte &#8594; Virement &#8594; Historique</h4>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>
+                              #
+                            </th>
+                            <th>
+                              Solde
+                            </th>
+                            <th>
+                              Sales
+                            </th>
+                            <th>
+                              Date virement
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor='let virement of virements; let i = index'>
+                            <td class="font-weight-medium">
+                              {{i + 1}}
+                            </td>
+                            <td>
+                              {{virement.montant}}€
+                            </td>
+                            <td class="text-danger"> Envoyé 
+                              <mat-icon>arrow_downward</mat-icon>
+                            </td>
+                            <td>
+                              {{virement.dateVirement | date}}
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Mon Compte &#8594; Paiment des services &#8594; Historique</h4>
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>
+                                #
+                              </th>
+                              <th>
+                                Solde
+                              </th>
+                              <th>
+                                Sales
+                              </th>
+                              <th>
+                                Date virement
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor='let virement of virements; let i = index'>
+                              <td class="font-weight-medium">
+                                {{i + 1}}
+                              </td>
+                              <td>
+                                {{virement.montant}}€
+                              </td>
+                              <td class="text-danger"> Envoyé 
+                                <mat-icon>arrow_downward</mat-icon>
+                              </td>
+                              <td>
+                                {{virement.dateVirement | date}}
+                              </td>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <app-footer></app-footer>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->

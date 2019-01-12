@@ -7,11 +7,12 @@ import { AuthentificationService } from '../shared/authentification.service';
 export class CompteService{
     //compteSelected = new EventEmitter<Compte>();
     comptesChanged = new EventEmitter<Compte[]>();
-    
+    compteChanged = new EventEmitter<Compte>();
     private comptes: Compte[] = [
         //new Compte('11222222222222222', '2019-01-26', 1000, ['ablalfkds'], ['sdgdsgdsgds'], ['fdgsgsdgds'])
     ];
 
+    private compte: Compte;
     constructor(private http: Http, private authService:AuthentificationService){}
 
     getComptes(){
@@ -19,9 +20,18 @@ export class CompteService{
         return this.comptes.slice();
     }
 
+    getCompte(){
+        return this.compte;
+    }
+
     setComptes(comptes: Compte[]){
         this.comptes = comptes;
         this.comptesChanged.emit(this.comptes.slice());
+    }
+
+    setCompte(compte: Compte){
+        this.compte = compte;
+        this.compteChanged.emit(this.compte);
     }
 
     getCompteFromBack(){
@@ -34,6 +44,22 @@ export class CompteService{
                 //console.log("Response: "+response.json());
             }
         );
+    }
+
+    infoCompte(rib){
+        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
+        return this.http.get('http://localhost:8080/Client/compte/'+rib,{headers: headers}).subscribe(
+            (response) => {
+                const compte: Compte = response.json();
+                this.setCompte(compte);
+                console.log("Compte: "+JSON.stringify(this.getCompte()));
+            }
+        );
+    }
+
+    mesStatistiques(){
+        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
+        return this.http.get('http://localhost:8080/Client/mes-statistiques',{headers: headers});
     }
 
     sendVirement(data){
@@ -58,5 +84,12 @@ export class CompteService{
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
         return this.http.post('http://localhost:8080/Client/modifier-mot-de-passe',JSON.stringify(data),{headers: headers});
     }
+
+    registerClient(data){
+        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
+        return this.http.post('http://localhost:8080/Client/register',data.value,{headers: headers});
+    }
+
+    
 
 }
