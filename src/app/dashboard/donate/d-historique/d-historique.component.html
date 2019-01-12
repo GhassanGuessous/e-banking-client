@@ -13,7 +13,7 @@
             <div class="col-lg-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Mes opérations &#8594; Virement &#8594; Historique</h4>
+                  <h4 class="card-title">Faire un don &#8594; Historique</h4>
                   <div class="table-responsive">
                     <table class="table table-bordered">
                       <thead>
@@ -24,27 +24,15 @@
                           <th>
                             Solde
                           </th>
-                          <th>
-                            Sales
-                          </th>
-                          <th>
-                            Date virement
-                          </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor='let virement of virements; let i = index'>
+                        <tr *ngFor='let don of dons; let i = index'>
                           <td class="font-weight-medium">
                             {{i + 1}}
                           </td>
                           <td>
-                            {{virement.montant}}€
-                          </td>
-                          <td class="text-danger"> Envoyé 
-                            <mat-icon>arrow_downward</mat-icon>
-                          </td>
-                          <td>
-                            {{virement.dateVirement | date}}
+                            {{don.montant}}€
                           </td>
                         </tr>
                         

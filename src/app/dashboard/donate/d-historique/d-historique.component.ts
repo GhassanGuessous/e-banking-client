@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DonService } from 'src/app/models/don.service';
+import { Don } from 'src/app/models/don.model';
 
 @Component({
   selector: 'app-d-historique',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DHistoriqueComponent implements OnInit {
 
-  constructor() { }
+  dons: Don[];
+  constructor(private donService: DonService) { }
 
   ngOnInit() {
+    this.donService.historiqueDon();
+    this.dons = this.donService.getDons();
+    this.donService.donsUpdated.subscribe(
+      (dons: Don[]) => {
+        this.dons = dons;
+      }
+    );
   }
 
 }
