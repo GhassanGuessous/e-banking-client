@@ -1,0 +1,57 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <app-navbar></app-navbar>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <app-sidebar></app-sidebar>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+          
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Réclamation</h4>
+                  <form class="form-sample" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  
+                    <div class="row">
+                      <div class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Message</label>
+                          <div class="col-sm-9">
+                              <textarea type="text" class="form-control" placeholder="Votre Message ... " rows="8" ngModel name="corps"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                            <button type="submit" class="btn btn-danger btn-block">Envoyer réclamation</button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <app-footer></app-footer>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->

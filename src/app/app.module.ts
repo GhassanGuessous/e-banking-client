@@ -25,6 +25,13 @@ import { CompteService } from './models/compte.service';
 import { RachargesComponent } from './dashboard/paiment-services/racharges/racharges.component';
 import { FactureComponent } from './dashboard/paiment-services/facture/facture.component';
 import { FooterComponent } from './dashboard/footer/footer.component';
+import { ReclamationComponent } from './dashboard/reclamation/reclamation.component';
+import { VirementService } from './models/virement.service';
+import { HistoriqueComponent } from './dashboard/virement/historique/historique.component';
+import { PHistoriqueComponent } from './dashboard/paiment-services/p-historique/p-historique.component';
+import { PaimentService } from './models/paiment.service';
+import { ProfileComponent } from './dashboard/services/profile/profile.component';
+import { ChangePasswordComponent } from './dashboard/services/change-password/change-password.component';
 
 
 
@@ -41,7 +48,12 @@ import { FooterComponent } from './dashboard/footer/footer.component';
     VirementComponent,
     RachargesComponent,
     FactureComponent,
-    FooterComponent
+    FooterComponent,
+    ReclamationComponent,
+    HistoriqueComponent,
+    PHistoriqueComponent,
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +64,7 @@ import { FooterComponent } from './dashboard/footer/footer.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService, VirementService, PaimentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

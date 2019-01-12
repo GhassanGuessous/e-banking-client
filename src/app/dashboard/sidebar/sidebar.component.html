@@ -14,11 +14,11 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-success btn-block">New Project</button>
+        <a class="btn btn-danger btn-block" style="color:white;cursor:pointer" [routerLink]="['/reclamation']">Réclamation</a>
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" [routerLink]="['/dashboard']">
         <mat-icon class="menu-icon">tv</mat-icon>
         <span class="menu-title">Dashboard</span>
       </a>
@@ -37,6 +37,9 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/recharge']">Recharge</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/p-historique']">Historique</a>
+          </li>
         </ul>
       </div>
     </li>
@@ -50,16 +53,7 @@
       <div class="collapse" id="ui-basic" #manageDropDownMenu1>
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/factures']">Mes Cartes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Mes Prêts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Mes Prélèvements</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Mes Virement Permanent</a>
+            <a class="nav-link" [routerLink]="['/factures']">Mes Comptes</a>
           </li>
         </ul>
       </div>
@@ -78,7 +72,7 @@
             <a class="nav-link" [routerLink]="['/virement']">Virements</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Historique</a>
+            <a class="nav-link" [routerLink]="['/v-historique']">Historique</a>
           </li>
         </ul>
       </div>
@@ -93,13 +87,10 @@
       <div class="collapse" id="ui-basic" #manageDropDownMenu3>
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/facture']">Changement mot de passe</a>
+            <a class="nav-link" [routerLink]="['/change-password']">Changement mot de passe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Information profil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Simulation Crédit</a>
+            <a class="nav-link" [routerLink]="['/profil']">Information profil</a>
           </li>
         </ul>
       </div>

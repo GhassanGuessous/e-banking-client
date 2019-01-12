@@ -12,7 +12,7 @@ export class VirementComponent implements OnInit {
   compte: Compte;
   comptes: Compte[];
   selectedCompte: Compte;
-
+  sVP: string = 'Choisir un compte';
   solde: number = 0.00;
   newSolde: number;
   soldeApres: number;

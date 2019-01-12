@@ -2,18 +2,17 @@ import { Compte } from './compte.model';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Headers,Http } from '@angular/http';
 import { AuthentificationService } from '../shared/authentification.service';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CompteService{
-    compteSelected = new EventEmitter<Compte>();
+    //compteSelected = new EventEmitter<Compte>();
     comptesChanged = new EventEmitter<Compte[]>();
     
     private comptes: Compte[] = [
         //new Compte('11222222222222222', '2019-01-26', 1000, ['ablalfkds'], ['sdgdsgdsgds'], ['fdgsgsdgds'])
     ];
 
-    constructor(private http: Http,private httpClient: HttpClient, private authService:AuthentificationService){}
+    constructor(private http: Http, private authService:AuthentificationService){}
 
     getComptes(){
         //this.getCompteFromBack();
@@ -43,9 +42,21 @@ export class CompteService{
         return this.http.post('http://localhost:8080/Client/éffectuer-un-virement',JSON.stringify(data),{headers: headers});
     }
 
+    
+
     payerService(data){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
         return this.http.post('http://localhost:8080/Client/payer-un-service',JSON.stringify(data),{headers: headers});
+    }
+
+    reclamation(data){
+        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
+        return this.http.post('http://localhost:8080/Client/déposer-une-réclamation',JSON.stringify(data),{headers: headers});
+    }
+
+    changementMotDePass(data){
+        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
+        return this.http.post('http://localhost:8080/Client/modifier-mot-de-passe',JSON.stringify(data),{headers: headers});
     }
 
 }

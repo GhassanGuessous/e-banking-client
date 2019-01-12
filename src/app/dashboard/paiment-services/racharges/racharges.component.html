@@ -49,10 +49,16 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Votre solde</label>
-                        <div class="col-sm-9">
-                          <input class="form-control" placeholder="0.00€" [value]="solde" disabled/>
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">€</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="0.00€" [value]="solde" disabled>
+                        <div class="input-group-append">
+                          <span class="input-group-text">.00</span>
+                        </div>
                         </div>
                       </div>
                     </div>
