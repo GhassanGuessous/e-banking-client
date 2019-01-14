@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  public onError = false;
   constructor(private authentificationService: AuthentificationService,
               private router: Router) { }
 
@@ -29,7 +29,11 @@ export class LoginComponent implements OnInit {
         console.log("Token from service "+ this.authentificationService.getToken());
         this.router.navigate(['/dashboard']);
       },
-      (error) => console.log(error),
+      (error) => {
+        form.reset();
+        this.onError = true;
+        console.log('error : '+JSON.stringify(error));
+      },
     );
   }
 
