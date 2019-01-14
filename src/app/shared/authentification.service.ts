@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -17,6 +18,17 @@ export class AuthentificationService{
      return this.http.post('http://localhost:8080/login',form.value,{observe: "response"});
  }
 
+ getProfile(){
+     const httpOptions = {
+       headers: new HttpHeaders({
+         'Content-Type':  'application/json',
+         'Authorization': this.getToken()
+       })
+     };
+     return this.http.get('http://localhost:8080/Client/mon-profil', httpOptions)
+         .pipe(map((res:any) => res ));
+ }
+ 
  getToken(){
      return localStorage.getItem('token');
  }
