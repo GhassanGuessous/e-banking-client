@@ -29,14 +29,15 @@ export class RegisterComponent implements OnInit {
           window.scrollTo(0, 0);
           this.flashMessage.show('Well registred', {cssClass: 'alert-success', timeout: 5000});
         }else if(JSON.parse(response._body)[0] == "false"){
-          this.flashMessage.show('Error', {cssClass: 'alert-danger', timeout: 5000});
+          this.flashMessage.show(JSON.parse(response._body)[1], {cssClass: 'alert-danger', timeout: 5000});
           console.log('response ==> '+  JSON.parse(response._body)[1]);
         }
       },
       (error) => {
-        this.flashMessage.show(error, {cssClass: 'alert-danger', timeout: 5000});
-
-        console.log('Erro ==> ' + JSON.parse(error));
+        JSON.parse(error._body).errors.forEach((erro)=>{
+          this.flashMessage.show(erro.defaultMessage, {cssClass: 'alert-danger', timeout: 5000});
+          console.log('Erro ==> ' + erro.defaultMessage);
+        });
       }
     );
   }
