@@ -2,6 +2,7 @@ import { Compte } from './compte.model';
 import { Injectable, EventEmitter } from '@angular/core';
 import { Headers,Http } from '@angular/http';
 import { AuthentificationService } from '../shared/authentification.service';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
 export class CompteService{
@@ -68,7 +69,7 @@ export class CompteService{
         return this.http.post('http://localhost:8080/Client/éffectuer-un-virement',JSON.stringify(data),{headers: headers});
     }
 
-    
+
 
     payerService(data){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
@@ -86,10 +87,11 @@ export class CompteService{
     }
 
     registerClient(data){
-        const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.post('http://localhost:8080/Client/register',data.value,{headers: headers});
+        const headers = new Headers({"Content-Type": "application/json"});
+        return this.http.post('http://localhost:8080/Client/register',data ,{headers: headers})
+        .pipe(map((res:any) => res ));
     }
 
-    
+
 
 }

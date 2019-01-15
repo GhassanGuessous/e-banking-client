@@ -38,6 +38,9 @@ import { DonService } from './models/don.service';
 import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historique.component';
 
 
+import { FlashMessagesModule } from 'angular2-flash-messages';
+
+
 
 @NgModule({
   declarations: [
@@ -69,6 +72,7 @@ import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historiq
     ParticlesModule,
     HttpModule,
     HttpClientModule,
+    FlashMessagesModule.forRoot(),
     AppRoutingModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService, VirementService, PaimentService,DonService],

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CompteService } from '../models/compte.service';
 import { NgForm } from '@angular/forms';
 
+import { FlashMessagesService } from 'angular2-flash-messages';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,15 +12,31 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private compteService: CompteService) { }
+
+  constructor(
+      private compteService: CompteService,
+      private flashMessage : FlashMessagesService) { }
 
   ngOnInit() {
   }
 
-  onSubmit(form: NgForm){
-    this.compteService.registerClient(form).subscribe(
+  onSubmit(form){
+
+    this.compteService.registerClient(form.value).subscribe(
       (response) => {
-        console.log('response ==> '+response);
+
+        if(JSON.parse(response._body)[0] == "true"){
+          window.scrollTo(0, 0);
+          this.flashMessage.show('Well registred', {cssClass: 'alert-success', timeout: 5000});
+        }else if(JSON.parse(response._body)[0] == "false"){
+          this.flashMessage.show('Error', {cssClass: 'alert-danger', timeout: 5000});
+          console.log('response ==> '+  JSON.parse(response._body)[1]);
+        }
+      },
+      (error) => {
+        this.flashMessage.show(error, {cssClass: 'alert-danger', timeout: 5000});
+
+        console.log('Erro ==> ' + JSON.parse(error));
       }
     );
   }

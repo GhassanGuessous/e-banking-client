@@ -20,13 +20,13 @@ export class LoginComponent implements OnInit {
   onSignup(form: NgForm){
     //console.log(form.value)
     this.authentificationService.onSignin(form).subscribe(
-      
+
       (response) => {
-        //console.log(response);
+        console.log("respo: " + response);
         let jwtToken = response.headers.get('authorization');
         //console.log("Token from response " + jwtToken);
         this.authentificationService.setToken(jwtToken);
-        console.log("Token from service "+ this.authentificationService.getToken());
+        //console.log("Token from service "+ this.authentificationService.getToken());
         this.router.navigate(['/dashboard']);
       },
       (error) => {

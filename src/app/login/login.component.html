@@ -18,7 +18,7 @@
                   placeholder="Username"
                   ngModel
                   required
-                  pattern="^(?=.{4,12}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
+                  >
                   <div class="input-group-append">
                     <span class="input-group-text">
                       <i class="mdi mdi-check-circle-outline"></i>
@@ -40,7 +40,7 @@
               <div class="form-group">
                 <button class="btn btn-primary submit-btn btn-block" type="submit" [disabled]="!f.valid">Login</button>
               </div>
-              
+
             </form>
           </div>
           <ul class="auth-footer">
