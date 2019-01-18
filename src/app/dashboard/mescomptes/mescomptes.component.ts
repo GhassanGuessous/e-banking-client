@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Compte } from 'src/app/models/compte.model';
 import { CompteService } from 'src/app/models/compte.service';
+import { Virement } from 'src/app/models/virement.model';
+import { Paiment } from 'src/app/models/paiment.model';
 
 @Component({
   selector: 'app-mescomptes',
@@ -14,6 +16,10 @@ export class MescomptesComponent implements OnInit {
 
   compte: Compte;
   solde: number = 0.00;
+
+  virementsEnv: Virement[];
+  virementsRecus: Virement[];
+  paiementServices: Paiment[];
   
   constructor(private compteService: CompteService) { }
 
@@ -33,6 +39,9 @@ export class MescomptesComponent implements OnInit {
       (compte: Compte) => {
         //this.compte = compte;
         this.solde = compte.sold;
+        this.virementsEnv = compte.virementsEnvoyes;
+        this.virementsRecus = compte.virementsRecus;
+        this.paiementServices = compte.paiementServices;
         console.log("solde: "+compte.sold);
       }
     );

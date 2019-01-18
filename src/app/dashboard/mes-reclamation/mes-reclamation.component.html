@@ -1,0 +1,57 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <app-navbar></app-navbar>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <app-sidebar></app-sidebar>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          
+          
+            <div class="row">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title mb-4">Services &#8594; Mes réclamations</h5>
+                      <div class="fluid-container">
+                        
+                        <div *ngFor="let reclamation of reclamations" class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
+                          <div class="ticket-details col-md-9">
+                            <p class="text-gray ellipsis mb-2">{{reclamation.corps}}</p>
+                            <div class="row text-gray d-md-flex d-none">
+                                <div class="col-4 d-flex">
+                                  <small class="mb-0 mr-2 text-muted text-muted">Date :</small>
+                                  <small class="Last-responded mr-2 mb-0 text-muted text-muted">{{reclamation.dateDepot | date}}</small>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="ticket-actions col-md-2">
+                            <div class="btn-group dropdown">
+                              <button type="button" class="btn btn-success btn-sm" disabled>
+                                {{reclamation.etat}}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <app-footer></app-footer>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->

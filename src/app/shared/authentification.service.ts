@@ -37,6 +37,7 @@ export class AuthentificationService{
     localStorage.setItem("token", token);
     let jwtHelper = new JwtHelperService();
     this.roles = jwtHelper.decodeToken(token).roles;
+    console.log('Token : '+this.getToken());
     console.log("Roles : " + JSON.stringify(this.roles));
  }
 

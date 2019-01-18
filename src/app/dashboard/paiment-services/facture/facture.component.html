@@ -21,9 +21,37 @@
                   <div class="row">
                     <div class="col-md-10">
                       <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Organisme</label>
+                        <div class="col-sm-9">
+                          <select name="organisme" ngModel class="form-control" required>
+                            <option value="">Choisir un Organisme</option>
+                            <option *ngFor="let organisme of organismes" value="{{organisme.id}}">{{organisme.nom}}</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-md-10">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Sous Categorie</label>
+                          <div class="col-sm-9">
+                            <select name="sousCategorie" ngModel class="form-control" required>
+                              <option value="">Choisir une sous categorie</option>
+                              <option *ngFor="let sousCategorie of sousCategories" value="{{sousCategorie.id}}">{{sousCategorie.description}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Compte</label>
                         <div class="col-sm-9">
-                          <select name="ribSource" (change)="onSelected(t.value)" #t ngModel class="form-control" required>
+                          <select name="compte" (change)="onSelected(t.value)" #t ngModel class="form-control" required>
                             <option value="" selected="true">Choisir un compte</option>
                             <option *ngFor="let compte of comptes" value="{{compte.rib}}">{{compte.rib}}</option>
                           </select>

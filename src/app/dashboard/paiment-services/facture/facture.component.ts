@@ -4,6 +4,10 @@ import { Compte } from 'src/app/models/compte.model';
 import { NgForm } from '@angular/forms';
 
 import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
+import { OrganismeService } from 'src/app/models/organisme.service';
+import { Organisme } from 'src/app/models/organisme.model';
+import { SousCategorieService } from 'src/app/models/sous-categorie.service';
+import { SousCategorie } from 'src/app/models/sous-categories.model';
 
 @Component({
   selector: 'app-facture',
@@ -20,8 +24,13 @@ export class FactureComponent implements OnInit {
   newSolde: number = 0.00;
   soldeApres: number;
 
+  organismes: Organisme[];
+  sousCategories: SousCategorie[];
+
   constructor(private compteService: CompteService,
-    private flashMessage : TheFlashMessageService) { }
+    private flashMessage : TheFlashMessageService,
+    private organismeService: OrganismeService,
+    private sousCategorieService: SousCategorieService) { }
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -30,6 +39,20 @@ export class FactureComponent implements OnInit {
       (comptes: Compte[]) => {
         this.comptes = comptes;
         this.compte = this.comptes[0];
+      }
+    );
+
+    this.organismeService.getOrganismeFromBack();
+    this.organismeService.organismesChanged.subscribe(
+      (organismes: Organisme[]) => {
+        this.organismes = organismes
+      }
+    );
+
+    this.sousCategorieService.getSousCategorieFromBack();
+    this.sousCategorieService.sousCategorieChanged.subscribe(
+      (sousCategories: SousCategorie[]) => {
+        this.sousCategories = sousCategories.filter(x => x.categorie == "Facture");
       }
     );
   }
@@ -51,15 +74,7 @@ export class FactureComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    const data = {
-      'montant': form.value.montant,
-      'numeroContrat': form.value.numeroContrat,
-      'organisme': 3,
-      'sousCategorie': 2,
-      'compte': form.value.ribSource
-    };
-    console.log(data);
-    this.compteService.payerService(data).subscribe(
+    this.compteService.payerService(form.value).subscribe(
       (response) => {
         if(this.flashMessage.theFlashMessageResponse(response,'Facture payée avec succes')){
           form.reset();

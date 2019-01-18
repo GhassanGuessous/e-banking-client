@@ -8,9 +8,18 @@ import { AuthentificationService } from 'src/app/shared/authentification.service
 })
 export class NavbarComponent implements OnInit {
 
+  user: any;
   constructor(private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
+    this.authentificationService.getProfile().subscribe((data: any) => {
+      this.user = data;
+      //console.log(this.user);
+    },
+    err => {
+      console.log("err");
+      return false;
+  });
   }
 
   onLogout(){

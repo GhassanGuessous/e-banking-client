@@ -4,6 +4,8 @@ import { CompteService } from 'src/app/models/compte.service';
 import { NgForm } from '@angular/forms';
 import { DonService } from 'src/app/models/don.service';
 import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
+import { OrganismeService } from 'src/app/models/organisme.service';
+import { Organisme } from 'src/app/models/organisme.model';
 
 @Component({
   selector: 'app-donate',
@@ -17,11 +19,14 @@ export class DonateComponent implements OnInit {
   selectedCompte: Compte;
   
   solde: number = 0.00;
-  newSolde: number;
+  newSolde: number = 0.00;
   soldeApres: number;
+
+  organismes: Organisme[];
 
   constructor(private compteService: CompteService,
               private donService: DonService,
+              private organismeService: OrganismeService,
               private flashMessage: TheFlashMessageService) {}
 
   ngOnInit() {
@@ -30,6 +35,13 @@ export class DonateComponent implements OnInit {
     this.compteService.comptesChanged.subscribe(
       (comptes: Compte[]) => {
         this.comptes = comptes;
+      }
+    );
+
+    this.organismeService.getOrganismeFromBack();
+    this.organismeService.organismesChanged.subscribe(
+      (organismes: Organisme[]) => {
+        this.organismes = organismes
       }
     );
       

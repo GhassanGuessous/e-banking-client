@@ -22,6 +22,7 @@
                               <label class="col-sm-3 col-form-label">Compte</label>
                               <div class="col-sm-9">
                                 <select name="ribSource" (change)="onSelected(t.value)" #t ngModel class="form-control">
+                                  <option value="">Choisir un compte</option>
                                   <option *ngFor="let compte of comptes" value="{{compte.rib}}">{{compte.rib}}</option>
                                 </select>
                               </div>
@@ -66,7 +67,7 @@
               <div class="col-lg-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Mon Compte &#8594; Virement &#8594; Historique</h4>
+                    <h4 class="card-title">Mon Compte &#8594; Virement &#8594; Historique &#8594; Envoyés</h4>
                     <div class="table-responsive">
                       <table class="table table-bordered">
                         <thead>
@@ -86,18 +87,18 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor='let virement of virements; let i = index'>
+                          <tr *ngFor='let virementEnv of virementsEnv; let i = index'>
                             <td class="font-weight-medium">
                               {{i + 1}}
                             </td>
                             <td>
-                              {{virement.montant}}€
+                              {{virementEnv.montant}}€
                             </td>
                             <td class="text-danger"> Envoyé 
                               <mat-icon>arrow_downward</mat-icon>
                             </td>
                             <td>
-                              {{virement.dateVirement | date}}
+                              {{virementEnv.dateVirement | date}}
                             </td>
                           </tr>
                           
@@ -113,7 +114,7 @@
                 <div class="col-lg-12 grid-margin">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Mon Compte &#8594; Paiment des services &#8594; Historique</h4>
+                      <h4 class="card-title">Mon Compte &#8594; Virement &#8594; Historique &#8594; Recus</h4>
                       <div class="table-responsive">
                         <table class="table table-bordered">
                           <thead>
@@ -133,23 +134,76 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor='let virement of virements; let i = index'>
+                            <tr *ngFor='let virementRecus of virementsRecus; let i = index'>
                               <td class="font-weight-medium">
                                 {{i + 1}}
                               </td>
                               <td>
-                                {{virement.montant}}€
+                                {{virementRecus.montant}}€
                               </td>
                               <td class="text-danger"> Envoyé 
                                 <mat-icon>arrow_downward</mat-icon>
                               </td>
                               <td>
-                                {{virement.dateVirement | date}}
+                                {{virementRecus.dateVirement | date}}
                               </td>
                             </tr>
                             
                           </tbody>
                         </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <div class="row">
+                <div class="col-lg-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Mon Compte &#8594; Paiment des services &#8594; Historique</h4>
+                      <div class="table-responsive">
+                          <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>
+                                    #
+                                  </th>
+                                  <th>
+                                    Solde
+                                  </th>
+                                  <th>
+                                    Type service
+                                  </th>
+                                  <th>
+                                    N° Facture / Telephone
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let paiment of paiementServices; let i = index">
+                                  <td class="font-weight-medium">
+                                    {{i+1}}
+                                  </td>
+                                  <td class="text-danger" style="font-weight:bold">
+                                    {{paiment.montant}}€
+                                  </td>
+                                  <td *ngIf="paiment.numeroTelephone">
+                                    Recharge 
+                                  </td>
+                                  <td *ngIf="paiment.numeroContrat">
+                                    Facture
+                                  </td>
+                                  <td *ngIf="paiment.numeroTelephone">
+                                    0{{paiment.numeroTelephone}} 
+                                  </td>
+                                  <td *ngIf="paiment.numeroContrat">
+                                    {{paiment.numeroContrat}}
+                                  </td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>
                       </div>
                     </div>
                   </div>

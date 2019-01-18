@@ -3,6 +3,10 @@ import { CompteService } from 'src/app/models/compte.service';
 import { Compte } from 'src/app/models/compte.model';
 import { NgForm } from '@angular/forms';
 import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
+import { SousCategorieService } from 'src/app/models/sous-categorie.service';
+import { OrganismeService } from 'src/app/models/organisme.service';
+import { Organisme } from 'src/app/models/organisme.model';
+import { SousCategorie } from 'src/app/models/sous-categories.model';
 
 @Component({
   selector: 'app-racharges',
@@ -18,8 +22,13 @@ export class RachargesComponent implements OnInit {
   newSolde: number;
   soldeApres: number;
 
+  organismes: Organisme[];
+  sousCategories: SousCategorie[];
+
   constructor(private compteService: CompteService,
-    private flashMessage: TheFlashMessageService) { }
+    private flashMessage: TheFlashMessageService,
+    private organismeService: OrganismeService,
+    private sousCategorieService: SousCategorieService) { }
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -28,6 +37,20 @@ export class RachargesComponent implements OnInit {
       (comptes: Compte[]) => {
         this.comptes = comptes;
         this.compte = this.comptes[0];
+      }
+    );
+
+    this.organismeService.getOrganismeFromBack();
+    this.organismeService.organismesChanged.subscribe(
+      (organismes: Organisme[]) => {
+        this.organismes = organismes
+      }
+    );
+
+    this.sousCategorieService.getSousCategorieFromBack();
+    this.sousCategorieService.sousCategorieChanged.subscribe(
+      (sousCategories: SousCategorie[]) => {
+        this.sousCategories = sousCategories.filter(x => x.categorie == "Recharge");
       }
     );
   }
@@ -54,7 +77,7 @@ export class RachargesComponent implements OnInit {
       'numeroTelephone': form.value.numeroTelephone,
       'organisme': 3,
       'sousCategorie': 2,
-      'compte': form.value.ribSource
+      'compte': form.value.compte
     };
     //console.log(data);
     this.compteService.payerService(data).subscribe(

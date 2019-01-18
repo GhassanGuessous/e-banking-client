@@ -68,7 +68,8 @@
                               <label class="col-sm-3 col-form-label">Organisme</label>
                               <div class="col-sm-9">
                                 <select name="organisme" ngModel class="form-control" required>
-                                  <option value="1">Sidaxtion</option>
+                                  <option value="">Choisir un Organisme</option>
+                                  <option *ngFor="let organisme of organismes" value="{{organisme.id}}">{{organisme.nom}}</option>
                                 </select>
                               </div>
                             </div>

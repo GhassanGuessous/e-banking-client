@@ -9,6 +9,9 @@ export class CompteService{
     //compteSelected = new EventEmitter<Compte>();
     comptesChanged = new EventEmitter<Compte[]>();
     compteChanged = new EventEmitter<Compte>();
+
+    url = 'http://localhost:8080/';
+
     private comptes: Compte[] = [
         //new Compte('11222222222222222', '2019-01-26', 1000, ['ablalfkds'], ['sdgdsgdsgds'], ['fdgsgsdgds'])
     ];
@@ -37,11 +40,11 @@ export class CompteService{
 
     getCompteFromBack(){
         const headers = new Headers({'authorization': this.authService.getToken()});
-        this.http.get('http://localhost:8080/Client/mes-comptes',{headers: headers}).subscribe(
+        this.http.get(this.url+'Client/mes-comptes',{headers: headers}).subscribe(
             (response) => {
                 const comptes: Compte[] = response.json();
                 this.setComptes(comptes);
-                console.log("Comptes: "+JSON.stringify(this.getComptes()));
+                //console.log("Comptes: "+JSON.stringify(this.getComptes()));
                 //console.log("Response: "+response.json());
             }
         );
@@ -53,7 +56,7 @@ export class CompteService{
             (response) => {
                 const compte: Compte = response.json();
                 this.setCompte(compte);
-                console.log("Compte: "+JSON.stringify(this.getCompte()));
+                console.log("The specific Compte: "+JSON.stringify(this.getCompte()));
             }
         );
     }

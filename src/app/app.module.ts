@@ -40,6 +40,10 @@ import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historiq
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { TheFlashMessageService } from './shared/the-flash-message.service';
+import { OrganismeService } from './models/organisme.service';
+import { SousCategorieService } from './models/sous-categorie.service';
+import { MesReclamationComponent } from './dashboard/mes-reclamation/mes-reclamation.component';
+import { ReclamationService } from './models/reclamation.service';
 
 
 
@@ -64,7 +68,8 @@ import { TheFlashMessageService } from './shared/the-flash-message.service';
     ChangePasswordComponent,
     MescomptesComponent,
     DonateComponent,
-    DHistoriqueComponent
+    DHistoriqueComponent,
+    MesReclamationComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,10 @@ import { TheFlashMessageService } from './shared/the-flash-message.service';
     VirementService,
     PaimentService,
     DonService,
-    TheFlashMessageService
+    TheFlashMessageService,
+    OrganismeService,
+    SousCategorieService,
+    ReclamationService
   ],
   bootstrap: [AppComponent]
 })

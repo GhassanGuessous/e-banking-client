@@ -4,7 +4,7 @@
       <div class="nav-link">
         <div class="user-wrapper">
           <div class="text-wrapper">
-            <p class="profile-name">Richard V.Welsh</p>
+            <p class="profile-name">{{user.nom}} {{user.prenom}}</p>
             <div>
               <small class="designation text-muted">Client</small>
               <span class="status-indicator online"></span>
@@ -88,6 +88,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/profil']">Information profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/mes-reclamation']">Mes réclamation</a>
           </li>
         </ul>
       </div>

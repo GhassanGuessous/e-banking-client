@@ -1,4 +1,5 @@
 import { Virement } from './virement.model';
+import { Paiment } from './paiment.model';
 
 export class Compte{
     public rib: string;
@@ -6,9 +7,9 @@ export class Compte{
     public sold: number;
     public virementsEnvoyes: Virement[];
     public virementsRecus: Virement[];
-    public paiementServices: string[];
+    public paiementServices: Paiment[];
 
-    constructor(rib: string,dateCreation: string, sold: number, virementsEnvoyes: Virement[], virementsRecus: Virement[], paiementServices: string[]){
+    constructor(rib: string,dateCreation: string, sold: number, virementsEnvoyes: Virement[], virementsRecus: Virement[], paiementServices: Paiment[]){
         this.rib = rib;
         this.dateCreation = dateCreation;
         this.sold = sold;

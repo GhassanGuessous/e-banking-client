@@ -18,6 +18,7 @@ import { ChangePasswordComponent } from './dashboard/services/change-password/ch
 import { MescomptesComponent } from './dashboard/mescomptes/mescomptes.component';
 import { DonateComponent } from './dashboard/donate/donate.component';
 import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historique.component';
+import { MesReclamationComponent } from './dashboard/mes-reclamation/mes-reclamation.component';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     {path: 'd-historique', canActivate: [AuthGuard], component: DHistoriqueComponent},
 
     {path: 'reclamation', canActivate: [AuthGuard], component: ReclamationComponent},
+    {path: 'mes-reclamation', canActivate: [AuthGuard], component: MesReclamationComponent},
 
     {path: 'mes-comptes', canActivate: [AuthGuard], component: MescomptesComponent},
 
