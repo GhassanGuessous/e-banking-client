@@ -3,6 +3,8 @@ import { CompteService } from 'src/app/models/compte.service';
 import { Compte } from 'src/app/models/compte.model';
 import { NgForm } from '@angular/forms';
 
+import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
+
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -15,10 +17,11 @@ export class FactureComponent implements OnInit {
   selectedCompte: Compte;
 
   solde: number = 0.00;
-  newSolde: number;
+  newSolde: number = 0.00;
   soldeApres: number;
 
-  constructor(private compteService: CompteService) { }
+  constructor(private compteService: CompteService,
+    private flashMessage : TheFlashMessageService) { }
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -27,8 +30,6 @@ export class FactureComponent implements OnInit {
       (comptes: Compte[]) => {
         this.comptes = comptes;
         this.compte = this.comptes[0];
-        this.solde = this.comptes[0].sold;
-        this.newSolde = this.solde;
       }
     );
   }
@@ -60,7 +61,12 @@ export class FactureComponent implements OnInit {
     console.log(data);
     this.compteService.payerService(data).subscribe(
       (response) => {
-        console.log("response ===> "+response);
+        if(this.flashMessage.theFlashMessageResponse(response,'Facture payée avec succes')){
+          form.reset();
+        }
+      },
+      (error) => {
+        this.flashMessage.theFlashMessageError(error);
       }
     );
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompteService } from 'src/app/models/compte.service';
 import { Compte } from 'src/app/models/compte.model';
 import { NgForm } from '@angular/forms';
+import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
 
 @Component({
   selector: 'app-racharges',
@@ -17,7 +18,8 @@ export class RachargesComponent implements OnInit {
   newSolde: number;
   soldeApres: number;
 
-  constructor(private compteService: CompteService) { }
+  constructor(private compteService: CompteService,
+    private flashMessage: TheFlashMessageService) { }
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -26,8 +28,6 @@ export class RachargesComponent implements OnInit {
       (comptes: Compte[]) => {
         this.comptes = comptes;
         this.compte = this.comptes[0];
-        this.solde = this.comptes[0].sold;
-        this.newSolde = this.solde;
       }
     );
   }
@@ -56,10 +56,15 @@ export class RachargesComponent implements OnInit {
       'sousCategorie': 2,
       'compte': form.value.ribSource
     };
-    console.log(data);
+    //console.log(data);
     this.compteService.payerService(data).subscribe(
       (response) => {
-        console.log("response ===> "+response);
+        if(this.flashMessage.theFlashMessageResponse(response,'Recharge envoyée avec succes')){
+          form.reset();
+        }
+      },
+      (error) => {
+        this.flashMessage.theFlashMessageError(error);
       }
     );
   }

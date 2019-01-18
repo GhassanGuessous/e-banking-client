@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Compte } from 'src/app/models/compte.model';
 import { CompteService } from 'src/app/models/compte.service';
 import { NgForm } from '@angular/forms';
+import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
 
 @Component({
   selector: 'app-virement',
@@ -16,7 +17,8 @@ export class VirementComponent implements OnInit {
   solde: number = 0.00;
   newSolde: number;
   soldeApres: number;
-  constructor(private compteService: CompteService) {}
+  constructor(private compteService: CompteService,
+    private flashMessage: TheFlashMessageService) {}
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -25,17 +27,9 @@ export class VirementComponent implements OnInit {
       (comptes: Compte[]) => {
         this.comptes = comptes;
         this.compte = this.comptes[0];
-        this.solde = this.comptes[0].sold;
-        this.newSolde = this.solde;
       }
     );
-      
-    //console.log("solde " + this.solde);
   }
-
-  /*getAccounts(){
-    this.compteService.getCompteFromBack();
-  }*/
 
   onSelected(value){
 
@@ -62,7 +56,12 @@ export class VirementComponent implements OnInit {
     console.log(data);
     this.compteService.sendVirement(data).subscribe(
       (response) => {
-        console.log("response ===> "+response);
+        if(this.flashMessage.theFlashMessageResponse(response,'Virement effectuer avec succes')){
+          form.reset();
+        }
+      },
+      (error) => {
+        this.flashMessage.theFlashMessageError(error);
       }
     );
     

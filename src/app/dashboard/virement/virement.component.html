@@ -14,6 +14,7 @@
           <div class="col-12 grid-margin">
             <div class="card">
               <div class="card-body">
+                <flash-messages></flash-messages>
                 <h4 class="card-title">Mes opérations &#8594; Virement</h4>
                 <form class="form-sample" (ngSubmit)="onSubmit(f)" #f="ngForm">
                   
@@ -23,7 +24,8 @@
                       <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Comptes</label>
                         <div class="col-sm-9">
-                          <select name="ribSource"  (change)="onSelected(t.value)" #t [value]='comptes[0].rib' ngModel class="form-control" required>
+                          <select name="ribSource"  (change)="onSelected(t.value)" #t ngModel class="form-control" required>
+                            <option value="">Choisir un compte</option>
                             <option *ngFor="let compte of comptes" value="{{compte.rib}}" >{{compte.rib}}</option>
                           </select>
                         </div>

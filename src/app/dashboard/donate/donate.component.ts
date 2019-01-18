@@ -3,6 +3,7 @@ import { Compte } from 'src/app/models/compte.model';
 import { CompteService } from 'src/app/models/compte.service';
 import { NgForm } from '@angular/forms';
 import { DonService } from 'src/app/models/don.service';
+import { TheFlashMessageService } from 'src/app/shared/the-flash-message.service';
 
 @Component({
   selector: 'app-donate',
@@ -19,7 +20,9 @@ export class DonateComponent implements OnInit {
   newSolde: number;
   soldeApres: number;
 
-  constructor(private compteService: CompteService,private donService: DonService) {}
+  constructor(private compteService: CompteService,
+              private donService: DonService,
+              private flashMessage: TheFlashMessageService) {}
 
   ngOnInit() {
     this.compteService.getCompteFromBack();
@@ -27,8 +30,6 @@ export class DonateComponent implements OnInit {
     this.compteService.comptesChanged.subscribe(
       (comptes: Compte[]) => {
         this.comptes = comptes;
-        this.solde = this.comptes[0].sold;
-        this.newSolde = this.solde;
       }
     );
       
@@ -55,7 +56,12 @@ export class DonateComponent implements OnInit {
     console.log('form: '+JSON.stringify(form.value));
     this.donService.faireUnDon(form).subscribe(
       (response) => {
-        console.log('response faire un don: '+response);
+        if(this.flashMessage.theFlashMessageResponse(response,'Don effectuer avec succes')){
+          form.reset();
+        }
+      },
+      (error) => {
+        this.flashMessage.theFlashMessageError(error);
       }
     );
   }

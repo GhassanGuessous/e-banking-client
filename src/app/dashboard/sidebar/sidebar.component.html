@@ -3,13 +3,10 @@
     <li class="nav-item nav-profile">
       <div class="nav-link">
         <div class="user-wrapper">
-          <div class="profile-image">
-            <img src="/assets/images/faces/face1.jpg" alt="profile image">
-          </div>
           <div class="text-wrapper">
             <p class="profile-name">Richard V.Welsh</p>
             <div>
-              <small class="designation text-muted">Manager</small>
+              <small class="designation text-muted">Client</small>
               <span class="status-indicator online"></span>
             </div>
           </div>
@@ -113,26 +110,5 @@
           </ul>
         </div>
       </li>
-
-    <li class="nav-item">
-      <a class="nav-link" role="button" style="cursor: pointer" [appDropdown]="manageDropDownMenu4">
-        <mat-icon class="menu-icon">file_copy</mat-icon>
-        <span class="menu-title">Mes demandes en ligne</span>
-        <mat-icon class="menu-arrow">arrow_right</mat-icon>
-      </a>
-      <div class="collapse" id="ui-basic" #manageDropDownMenu4>
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/factures']">Demande Chéquier</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Commande de Fonds DH</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/recharge']">Commande de Fonds Devise</a>
-          </li>
-        </ul>
-      </div>
-    </li>
   </ul>
 </nav>

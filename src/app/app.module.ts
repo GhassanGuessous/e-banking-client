@@ -39,6 +39,7 @@ import { DHistoriqueComponent } from './dashboard/donate/d-historique/d-historiq
 
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { TheFlashMessageService } from './shared/the-flash-message.service';
 
 
 
@@ -75,7 +76,17 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     FlashMessagesModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' },AuthentificationService, AuthGuard,LogGuard,CompteService, VirementService, PaimentService,DonService],
+  providers: [
+    {provide: APP_BASE_HREF, useValue : '/' },
+    AuthentificationService,
+    AuthGuard,
+    LogGuard,
+    CompteService,
+    VirementService,
+    PaimentService,
+    DonService,
+    TheFlashMessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
