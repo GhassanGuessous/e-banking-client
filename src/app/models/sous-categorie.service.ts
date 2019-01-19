@@ -5,7 +5,7 @@ import { AuthentificationService } from '../shared/authentification.service';
 
 @Injectable()
 export class SousCategorieService{
-
+    url = 'https://e-banking-project.herokuapp.com';
     sousCategorieChanged = new EventEmitter<SousCategorie[]>();
     private sousCategories: SousCategorie[];
 
@@ -22,12 +22,12 @@ export class SousCategorieService{
 
     getSousCategorieFromBack(){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.get('http://localhost:8080/Admin/getSousCategories',{headers: headers}).subscribe(
+        return this.http.get(this.url+'/Admin/getSousCategories',{headers: headers}).subscribe(
             (response) => {
-                console.log(response);
+                //console.log(response);
                 const sousCategories: SousCategorie[] = response.json();
                 this.setSousCategorie(sousCategories);
-                console.log("sous categories : "+JSON.stringify(this.getSousCategorie()));
+                //console.log("sous categories : "+JSON.stringify(this.getSousCategorie()));
             },
             (error) =>{
                 console.log(error);

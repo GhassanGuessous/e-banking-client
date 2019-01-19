@@ -53,7 +53,7 @@ export class DonateComponent implements OnInit {
     this.compte = this.comptes.filter(x => x.rib == value)[0];
     this.solde = this.compte.sold;
     this.newSolde = this.solde;
-    console.log("compte : "+JSON.stringify(this.compte));
+    //console.log("compte : "+JSON.stringify(this.compte));
   }
 
   onWritingSolde(event){
@@ -65,7 +65,7 @@ export class DonateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    console.log('form: '+JSON.stringify(form.value));
+    //console.log('form: '+JSON.stringify(form.value));
     this.donService.faireUnDon(form).subscribe(
       (response) => {
         if(this.flashMessage.theFlashMessageResponse(response,'Don effectuer avec succes')){

@@ -60,7 +60,7 @@ export class RachargesComponent implements OnInit {
     this.compte = this.comptes.filter(x => x.rib == value)[0];
     this.solde = this.compte.sold;
     this.newSolde = this.solde;
-    console.log("compte : "+JSON.stringify(this.compte));
+    //console.log("compte : "+JSON.stringify(this.compte));
   }
 
   onWritingSolde(event){

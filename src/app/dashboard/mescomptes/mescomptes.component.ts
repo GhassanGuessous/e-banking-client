@@ -42,7 +42,7 @@ export class MescomptesComponent implements OnInit {
         this.virementsEnv = compte.virementsEnvoyes;
         this.virementsRecus = compte.virementsRecus;
         this.paiementServices = compte.paiementServices;
-        console.log("solde: "+compte.sold);
+        //console.log("solde: "+compte.sold);
       }
     );
   }

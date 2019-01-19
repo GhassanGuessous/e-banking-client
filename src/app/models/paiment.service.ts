@@ -8,7 +8,7 @@ import { Paiment } from './paiment.model';
 export class PaimentService{
     private pServices: Paiment[];
     paimentChanged = new EventEmitter<Paiment[]>();
-    
+    url = 'https://e-banking-project.herokuapp.com';
     constructor(private http: Http, private authService:AuthentificationService){}
 
     getPaimentService(){
@@ -22,11 +22,11 @@ export class PaimentService{
 
     getHistoriquePaimentService(){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        this.http.get('http://localhost:8080/Client/mes-services-payés',{headers: headers}).subscribe(
+        this.http.get(this.url+'/Client/mes-services-payés',{headers: headers}).subscribe(
             (response) => {
                 const pServices: Paiment[] = response.json();
                 this.setPaimentService(pServices);
-                console.log("Paiment des service: "+JSON.stringify(this.getPaimentService()));
+                //console.log("Paiment des service: "+JSON.stringify(this.getPaimentService()));
                 //console.log("Response: "+response.json());
             }
         );

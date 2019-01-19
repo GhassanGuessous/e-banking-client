@@ -11,11 +11,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthentificationService{
  roles: Array<any> = [];
  token: string;
+ url = 'https://e-banking-project.herokuapp.com';
  constructor(private router: Router,private http: HttpClient){}
 
  onSignin(form: NgForm){
      //console.log(form.value);
-     return this.http.post('http://localhost:8080/login',form.value,{observe: "response"});
+     return this.http.post(this.url+'/login',form.value,{observe: "response"});
  }
 
  getProfile(){
@@ -25,7 +26,7 @@ export class AuthentificationService{
          'Authorization': this.getToken()
        })
      };
-     return this.http.get('http://localhost:8080/Client/mon-profil', httpOptions)
+     return this.http.get(this.url+'/Client/mon-profil', httpOptions)
          .pipe(map((res:any) => res ));
  }
  
@@ -37,8 +38,8 @@ export class AuthentificationService{
     localStorage.setItem("token", token);
     let jwtHelper = new JwtHelperService();
     this.roles = jwtHelper.decodeToken(token).roles;
-    console.log('Token : '+this.getToken());
-    console.log("Roles : " + JSON.stringify(this.roles));
+    //console.log('Token : '+this.getToken());
+    //console.log("Roles : " + JSON.stringify(this.roles));
  }
 
  isAuthenticated(){

@@ -10,7 +10,7 @@ export class CompteService{
     comptesChanged = new EventEmitter<Compte[]>();
     compteChanged = new EventEmitter<Compte>();
 
-    url = 'http://localhost:8080/';
+    url = 'https://e-banking-project.herokuapp.com';
 
     private comptes: Compte[] = [
         //new Compte('11222222222222222', '2019-01-26', 1000, ['ablalfkds'], ['sdgdsgdsgds'], ['fdgsgsdgds'])
@@ -40,7 +40,7 @@ export class CompteService{
 
     getCompteFromBack(){
         const headers = new Headers({'authorization': this.authService.getToken()});
-        this.http.get(this.url+'Client/mes-comptes',{headers: headers}).subscribe(
+        this.http.get(this.url+'/Client/mes-comptes',{headers: headers}).subscribe(
             (response) => {
                 const comptes: Compte[] = response.json();
                 this.setComptes(comptes);
@@ -52,46 +52,46 @@ export class CompteService{
 
     infoCompte(rib){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.get('http://localhost:8080/Client/compte/'+rib,{headers: headers}).subscribe(
+        return this.http.get(this.url+'/Client/compte/'+rib,{headers: headers}).subscribe(
             (response) => {
                 const compte: Compte = response.json();
                 this.setCompte(compte);
-                console.log("The specific Compte: "+JSON.stringify(this.getCompte()));
+                //console.log("The specific Compte: "+JSON.stringify(this.getCompte()));
             }
         );
     }
 
     mesStatistiques(){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.get('http://localhost:8080/Client/mes-statistiques',{headers: headers});
+        return this.http.get(this.url+'/Client/mes-statistiques',{headers: headers});
     }
 
     sendVirement(data){
         //console.log("Tha data : " + JSON.stringify(data));
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.post('http://localhost:8080/Client/éffectuer-un-virement',JSON.stringify(data),{headers: headers});
+        return this.http.post(this.url+'/Client/éffectuer-un-virement',JSON.stringify(data),{headers: headers});
     }
 
 
 
     payerService(data){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.post('http://localhost:8080/Client/payer-un-service',JSON.stringify(data),{headers: headers});
+        return this.http.post(this.url+'/Client/payer-un-service',JSON.stringify(data),{headers: headers});
     }
 
     reclamation(data){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.post('http://localhost:8080/Client/déposer-une-réclamation',JSON.stringify(data),{headers: headers});
+        return this.http.post(this.url+'/Client/déposer-une-réclamation',JSON.stringify(data),{headers: headers});
     }
 
     changementMotDePass(data){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.post('http://localhost:8080/Client/modifier-mot-de-passe',JSON.stringify(data),{headers: headers});
+        return this.http.post(this.url+'/Client/modifier-mot-de-passe',JSON.stringify(data),{headers: headers});
     }
 
     registerClient(data){
         const headers = new Headers({"Content-Type": "application/json"});
-        return this.http.post('http://localhost:8080/Client/register',data ,{headers: headers})
+        return this.http.post(this.url+'/Client/register',data ,{headers: headers})
         .pipe(map((res:any) => res ));
     }
 

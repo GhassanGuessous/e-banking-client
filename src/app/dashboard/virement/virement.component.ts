@@ -15,7 +15,7 @@ export class VirementComponent implements OnInit {
   selectedCompte: Compte;
   
   solde: number = 0.00;
-  newSolde: number;
+  newSolde: number = 0.00;
   soldeApres: number;
   constructor(private compteService: CompteService,
     private flashMessage: TheFlashMessageService) {}
@@ -36,7 +36,7 @@ export class VirementComponent implements OnInit {
     this.compte = this.comptes.filter(x => x.rib == value)[0];
     this.solde = this.compte.sold;
     this.newSolde = this.solde;
-    console.log("compte : "+JSON.stringify(this.compte));
+    //console.log("compte : "+JSON.stringify(this.compte));
   }
 
   onWritingSolde(event){
@@ -53,7 +53,7 @@ export class VirementComponent implements OnInit {
       'ribDestination': form.value.rib,
       'montant': form.value.soldeVirement,
     };
-    console.log(data);
+    //console.log(data);
     this.compteService.sendVirement(data).subscribe(
       (response) => {
         if(this.flashMessage.theFlashMessageResponse(response,'Virement effectuer avec succes')){

@@ -8,12 +8,14 @@ import { AuthentificationService } from 'src/app/shared/authentification.service
 })
 export class SidebarComponent implements OnInit {
 
-  user: any;
+  nom: string = '';
+  prenom: string = '';
   constructor(private authentificationService: AuthentificationService) { }
 
   ngOnInit() {
     this.authentificationService.getProfile().subscribe((data: any) => {
-      this.user = data;
+      this.nom = data.nom;
+      this.prenom = data.prenom;
       //console.log(this.user);
     },
     err => {

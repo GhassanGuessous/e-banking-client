@@ -5,7 +5,7 @@ import { Organisme } from './organisme.model';
 
 @Injectable()
 export class OrganismeService{
-
+    url = 'https://e-banking-project.herokuapp.com';
     organismesChanged = new EventEmitter<Organisme[]>();
     private organismes: Organisme[];
 
@@ -22,12 +22,12 @@ export class OrganismeService{
 
     getOrganismeFromBack(){
         const headers = new Headers({"Content-Type": "application/json; charset=utf8",'authorization': this.authService.getToken()});
-        return this.http.get('http://localhost:8080/Admin/getOrganisms',{headers: headers}).subscribe(
+        return this.http.get(this.url+'/Admin/getOrganisms',{headers: headers}).subscribe(
             (response) => {
-                console.log(response);
+                //console.log(response);
                 const organismes: Organisme[] = response.json();
                 this.setOrganisme(organismes);
-                console.log("Organismes: "+JSON.stringify(this.getOrganisme()));
+                //console.log("Organismes: "+JSON.stringify(this.getOrganisme()));
             },
             (error) =>{
                 console.log(error);

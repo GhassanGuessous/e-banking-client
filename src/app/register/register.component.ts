@@ -28,9 +28,11 @@ export class RegisterComponent implements OnInit {
         if(JSON.parse(response._body)[0] == "true"){
           window.scrollTo(0, 0);
           this.flashMessage.show('Well registred', {cssClass: 'alert-success', timeout: 5000});
+          form.reset();
+          
         }else if(JSON.parse(response._body)[0] == "false"){
           this.flashMessage.show(JSON.parse(response._body)[1], {cssClass: 'alert-danger', timeout: 5000});
-          console.log('response ==> '+  JSON.parse(response._body)[1]);
+          //console.log('response ==> '+  JSON.parse(response._body)[1]);
         }
       },
       (error) => {

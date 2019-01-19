@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.authentificationService.onSignin(form).subscribe(
 
       (response) => {
-        console.log("respo: " + response);
+        //console.log("respo: " + response);
         let jwtToken = response.headers.get('authorization');
         //console.log("Token from response " + jwtToken);
         this.authentificationService.setToken(jwtToken);

@@ -19,7 +19,7 @@ export class PHistoriqueComponent implements OnInit {
     this.paimentService.paimentChanged.subscribe(
       (pServices: Paiment[]) => {
         this.pServices = pServices;
-        console.log('Paiment historique: '+this.pServices.length);
+        //console.log('Paiment historique: '+this.pServices.length);
       }
     );
   }
